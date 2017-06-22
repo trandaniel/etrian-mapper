@@ -5,9 +5,14 @@ import java.awt.*;
  */
 public class Cell {
 
-    int BORDER_WIDTH = 2 ;
-    int CELL_WIDTH = 20 ;
-    int CELL_HEIGHT = 20 ;
+    final int WALL_TOP = 0 ;
+    final int WALL_RIGHT = 1 ;
+    final int WALL_BOTTOM = 2 ;
+    final int WALL_LEFT = 3 ;
+
+    final int BORDER_WIDTH = 2 ;
+    final int CELL_WIDTH = 20 ;
+    final int CELL_HEIGHT = 20 ;
 
     Color BORDER_COLOR_DARK     = new Color(8, 57, 90) ;
     Color BORDER_COLOR_LIGHT    = new Color(24, 74, 115) ;
@@ -25,6 +30,13 @@ public class Cell {
     int height ;
     int width ;
     int border ;
+    int col ;
+    int row ;
+
+    boolean wallTop ;
+    boolean wallRight ;
+    boolean wallBottom ;
+    boolean wallLeft ;
 
     public Cell() {
         height = CELL_HEIGHT ;
@@ -36,6 +48,31 @@ public class Cell {
         borderRight = BORDER_COLOR_DARK ;
         borderBottom = BORDER_COLOR_DARK ;
         borderLeft = BORDER_COLOR_DARK ;
+
+        wallTop = false ;
+        wallRight = false ;
+        wallBottom = false ;
+        wallLeft = false ;
+    }
+
+    public Cell(int i, int j) {
+        height = CELL_HEIGHT ;
+        width = CELL_WIDTH ;
+        border = BORDER_WIDTH ;
+
+        cellColor = CELL_COLOR_DEFAULT ;
+        borderTop = BORDER_COLOR_DARK ;
+        borderRight = BORDER_COLOR_DARK ;
+        borderBottom = BORDER_COLOR_DARK ;
+        borderLeft = BORDER_COLOR_DARK ;
+
+        wallTop = false ;
+        wallRight = false ;
+        wallBottom = false ;
+        wallLeft = false ;
+
+        col = j ; //  col
+        row = i ; //  row
     }
 
     public void borderSectionTop() {
@@ -86,6 +123,44 @@ public class Cell {
         return border ;
     }
 
+    public int getRow() {
+        return row ;
+    }
+
+    public int getCol() {
+        return col ;
+    }
+
+    public void toggleWall(int id) {
+        switch(id){
+            case WALL_TOP:      wallTop = !wallTop ;
+                                break ;
+            case WALL_RIGHT:    wallRight = !wallRight ;
+                                break ;
+            case WALL_BOTTOM:   wallBottom = !wallBottom ;
+                                break ;
+            case WALL_LEFT:     wallLeft = !wallLeft ;
+                                break ;
+            default:            break ;
+        }
+    }
+
+    public boolean isWallTop() {
+        return wallTop ;
+    }
+
+    public boolean isWallRight() {
+        return wallRight ;
+    }
+
+    public boolean isWallBottom() {
+        return wallBottom ;
+    }
+
+    public boolean isWallLeft() {
+        return wallLeft ;
+    }
+    
     public Color getCellColor() {
         return cellColor ;
     }
