@@ -5,9 +5,9 @@ import java.awt.*;
  */
 public class Cell {
 
-    int BORDER_WIDTH = 1 ;
-    int CELL_WIDTH = 16 ;
-    int CELL_HEIGHT = 16 ;
+    int BORDER_WIDTH = 2 ;
+    int CELL_WIDTH = 20 ;
+    int CELL_HEIGHT = 20 ;
 
     Color BORDER_COLOR_DARK     = new Color(8, 57, 90) ;
     Color BORDER_COLOR_LIGHT    = new Color(24, 74, 115) ;

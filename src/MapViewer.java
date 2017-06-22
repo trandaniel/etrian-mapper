@@ -15,8 +15,8 @@ public class MapViewer implements ActionListener {
     JFrame mainWindow ; //window
 
     JPanel outerPane ;
-    JPanel innerPane ;
-    JPanel cp ;
+
+    MapPanel mapPanel ;
 
     JMenuBar menuBar ;
 
@@ -32,6 +32,8 @@ public class MapViewer implements ActionListener {
 
     public MapViewer() {
         mainWindow = new JFrame() ;
+        mapPanel = new MapPanel() ;
+
         mainWindow.setTitle("EO Mapper") ;
 
         mainWindow.setSize(new Dimension(800, 600)) ;
@@ -44,15 +46,30 @@ public class MapViewer implements ActionListener {
         outerPane.setLayout(new BorderLayout()) ;
 
 
-        newBtn = makeBtn("New", "../img/new.png", "New File") ;
+
 
         toolBar = new JToolBar() ;
-        toolBar.add(newBtn) ;
+
+        toolBar = addToolBarBtns(toolBar) ;
+
+        mapPanel.setVisible(true) ;
 
         outerPane.add(toolBar, BorderLayout.NORTH) ;
 
+        outerPane.add(mapPanel) ;
 
 
+
+    }
+
+    public JToolBar addToolBarBtns(JToolBar toolbar) {
+        JToolBar newToolBar = toolBar ;
+
+        newToolBar.add(makeBtn("New", "../img/new.png", "New File")) ;
+        newToolBar.add(makeBtn("Add Row", "../img/addRow.png", "Add Row")) ;
+        newToolBar.add(makeBtn("Add Col", "../img/addCol.png", "Add Column")) ;
+
+        return newToolBar ;
     }
 
     public JButton makeBtn(String text, String img, String toolTip) {
@@ -78,6 +95,7 @@ public class MapViewer implements ActionListener {
 
         return button ;
     }
+
 
     public void actionPerformed(ActionEvent e) {
 

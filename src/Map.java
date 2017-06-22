@@ -3,7 +3,7 @@
  */
 public class Map {
 
-    int DEFAULT_SIZE = 5 ;
+    int DEFAULT_SIZE = 20 ;
 
     Cell[][] map ;
 
@@ -22,5 +22,9 @@ public class Map {
                 System.out.println("Cell " + i + ", " + j + ": " + map[i][j].getCellColor()) ;
             }
         }
+    }
+
+    public Cell getCellByIndex(int i ,int j) {
+        return map[i][j] ;
     }
 }
