@@ -28,6 +28,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
                 g2.setStroke(new BasicStroke(thickness)) ;
                 g2.setColor(map.map[i][j].BORDER_COLOR_DARK) ;
                 g2.drawRect(40 + (i * map.map[i][j].getWidth()), 40 + (j * map.map[i][j].getHeight()), map.map[i][j].getWidth(), map.map[i][j].getHeight()) ;
+                g2.setStroke(oldStroke) ;
 
             }
         }

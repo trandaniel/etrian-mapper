@@ -67,7 +67,9 @@ public class MapViewer implements ActionListener {
 
         newToolBar.add(makeBtn("New", "../img/new.png", "New File")) ;
         newToolBar.add(makeBtn("Add Row", "../img/addRow.png", "Add Row")) ;
+        newToolBar.add(makeBtn("Delete Row", "../img/delRow.png", "Delete Row")) ;
         newToolBar.add(makeBtn("Add Col", "../img/addCol.png", "Add Column")) ;
+        newToolBar.add(makeBtn("Delete Col", "../img/delCol.png", "Delete Column")) ;
 
         return newToolBar ;
     }
