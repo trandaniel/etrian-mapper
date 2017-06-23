@@ -84,13 +84,42 @@ public class Cell {
         cellLeft = null ;
 
         // do something here to set section borders??
+
         sectionTop = false ;
         sectionRight = false ;
         sectionBottom = false ;
         sectionLeft = false ;
 
-        col = j ; //  col
-        row = i ; //  row
+        this.row = i ;
+        this.col = j ;
+
+        sectionBorders() ;
+    }
+
+    public void sectionBorders() {
+        if(col == 0) {
+            sectionLeft = true ;
+        }
+
+        if(row == 0) {
+            sectionTop = true ;
+        }
+
+        if((col + 1) % 5 == 0) {
+            sectionRight = true ;
+        }
+
+        if((row + 1) % 5 == 0) {
+            sectionBottom = true ;
+        }
+
+        if((col + 1) % 5 == 1) {
+            sectionLeft = true ;
+        }
+
+        if((row + 1) % 5 == 1) {
+            sectionTop = true ;
+        }
     }
 
     public void paintDefault() {
@@ -127,14 +156,6 @@ public class Cell {
 
     public void toggleLeftWall() {
         wallLeft = !wallLeft ;
-    }
-
-    public void setRow(int row) {
-        this.row = row ;
-    }
-
-    public void setCol(int col) {
-        this.col = col ;
     }
 
     public void setCellTop(Cell cell) {

@@ -20,7 +20,10 @@ public class MapLauncher {
 
         map.getCellByIndex(6, 6).paintOrange() ;
 
-        map.getCellByIndex(8, 8).paintGreen() ;
+        map.getCellByIndex(10, 8).paintGreen() ;
+
+        map.printCells();
+
         mapViewer.mapPanel.repaint() ;
 
     }

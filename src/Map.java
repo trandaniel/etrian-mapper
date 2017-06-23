@@ -5,6 +5,7 @@ public class Map {
 
     int DEFAULT_SIZE = 20 ;
 
+    // [row][col]
     Cell[][] map ;
 
     public Map() {
@@ -19,8 +20,9 @@ public class Map {
     public void printCells() {
         for(int i = 0 ; i < map.length ; i++) {
             for(int j = 0 ; j < map[i].length ; j++) {
-                System.out.println("Cell " + i + ", " + j + ": " + map[i][j].getCellColor()) ;
+                System.out.println("(" + j + ", " + i + "): " + map[i][j].isSectionRight() + " ") ;
             }
+            System.out.println() ;
         }
     }
 
