@@ -19,8 +19,15 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
     private final int PAINT_CELL = 1 ;
     private final int PAINT_WALL = 2 ;
 
+    private final int PAINT_COLOR_0 = 0 ;
+    private final int PAINT_COLOR_1 = 1 ;
+    private final int PAINT_COLOR_2 = 2 ;
+    private final int PAINT_COLOR_3 = 3 ;
+    private final int PAINT_COLOR_4 = 4 ;
+
     private Map map ;
     private int paintMode ;
+    private int paintColor ;
     int mapSize ;
 
     public MapPanel() {
@@ -29,7 +36,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
         addMouseListener(this);
         addMouseMotionListener(this);
 
-        paintMode = PAINT_WALL ;
+        paintMode = PAINT_CELL ;
+        paintColor = PAINT_COLOR_3 ;
 
     }
 
@@ -224,7 +232,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
         int col = (x - X_ORIGIN) / CELL_WIDTH ;
 
         if(paintMode == PAINT_CELL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
-            map.paintCellBlue(col, row) ;
+            map.paintCell(col, row, paintColor) ;
         }
 
         if(paintMode == PAINT_WALL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
@@ -271,7 +279,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
         int col = (x - X_ORIGIN) / CELL_WIDTH ;
 
         if(paintMode == PAINT_CELL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
-            map.paintCellBlue(col, row) ;
+            map.paintCell(col, row, paintColor) ;
         }
 
         repaint() ;

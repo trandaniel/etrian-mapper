@@ -5,6 +5,12 @@ public class Map {
 
     final int DEFAULT_SIZE = 20 ;
 
+    private final int PAINT_COLOR_0 = 0 ;
+    private final int PAINT_COLOR_1 = 1 ;
+    private final int PAINT_COLOR_2 = 2 ;
+    private final int PAINT_COLOR_3 = 3 ;
+    private final int PAINT_COLOR_4 = 4 ;
+
     // [row][col]
     public Cell[][] map ;
     public int size ;
@@ -100,6 +106,22 @@ public class Map {
         map[i][j].paintDefault() ;
 
         setAdjCells();
+    }
+
+    public void paintCell(int j, int i, int color) {
+        switch(color) {
+            case PAINT_COLOR_0: paintCellDefault(j, i) ;
+                                break ;
+            case PAINT_COLOR_1: paintCellBlue(j, i) ;
+                                break ;
+            case PAINT_COLOR_2: paintCellRed(j, i) ;
+                                break ;
+            case PAINT_COLOR_3: paintCellOrange(j, i) ;
+                                break ;
+            case PAINT_COLOR_4: paintCellGreen(j, i) ;
+                                break ;
+            default:            paintCellDefault(j, i) ;
+        }
     }
 
     public void paintCellBlue(int j, int i) {
