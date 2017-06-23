@@ -15,6 +15,9 @@ public class Cell {
 
     private final Color CELL_COLOR_DEFAULT    = new Color(0, 41, 74) ;
     private final Color CELL_COLOR_BLUE       = new Color(49, 133, 181) ;
+    private final Color CELL_COLOR_RED        = new Color(181, 20, 20) ;
+    private final Color CELL_COLOR_ORANGE     = new Color(246, 147, 28) ;
+    private final Color CELL_COLOR_GREEN      = new Color(122, 197, 117) ;
 
     private Color cellColor ;
 
@@ -96,6 +99,18 @@ public class Cell {
 
     public void paintBlue() {
         cellColor = CELL_COLOR_BLUE ;
+    }
+
+    public void paintRed() {
+        cellColor = CELL_COLOR_RED ;
+    }
+
+    public void paintOrange() {
+        cellColor = CELL_COLOR_ORANGE ;
+    }
+
+    public void paintGreen() {
+        cellColor = CELL_COLOR_GREEN ;
     }
 
     public void toggleTopWall() {

@@ -16,7 +16,11 @@ public class MapLauncher {
 
         map.getCellByIndex(2, 2).paintBlue() ;
 
-        System.out.println(map.getCellByIndex(2, 2).getBorderTopColor()) ;
+        map.getCellByIndex(4, 4).paintRed() ;
+
+        map.getCellByIndex(6, 6).paintOrange() ;
+
+        map.getCellByIndex(8, 8).paintGreen() ;
         mapViewer.mapPanel.repaint() ;
 
     }
