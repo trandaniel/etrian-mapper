@@ -20,8 +20,6 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g ;
-        float thickness ;
-        Stroke oldStroke = g2.getStroke() ;
         Cell cell ;
         for(int i = 0 ; i < map.DEFAULT_SIZE ; i++) {
             for(int j = 0 ; j < map.DEFAULT_SIZE ; j++) {
@@ -58,7 +56,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
         g2.setStroke(new BasicStroke(cell.getBorder()));
 
-        g2.setColor(cell.getBorderColor());
+        g2.setColor(cell.getBorderTopColor());
         g2.drawLine(x1, y1, x2, y2);
 
         g2.setStroke(oldStroke);
@@ -75,7 +73,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
         g2.setStroke(new BasicStroke(cell.getBorder())) ;
 
-        g2.setColor(cell.getBorderColor()) ;
+        g2.setColor(cell.getBorderRightColor()) ;
         g2.drawLine(x1, y1, x2, y2) ;
 
         g2.setStroke(oldStroke) ;
@@ -92,7 +90,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
         g2.setStroke(new BasicStroke(cell.getBorder())) ;
 
-        g2.setColor(cell.getBorderColor()) ;
+        g2.setColor(cell.getBorderBottomColor()) ;
         g2.drawLine(x1, y1, x2, y2) ;
 
         g2.setStroke(oldStroke) ;
@@ -109,7 +107,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
         g2.setStroke(new BasicStroke(cell.getBorder())) ;
 
-        g2.setColor(cell.getBorderColor()) ;
+        g2.setColor(cell.getBorderLeftColor()) ;
         g2.drawLine(x1, y1, x2, y2) ;
 
         g2.setStroke(oldStroke) ;
