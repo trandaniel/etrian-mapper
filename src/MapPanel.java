@@ -9,10 +9,11 @@ import java.awt.event.MouseMotionListener;
  */
 public class MapPanel extends JPanel implements MouseListener, MouseMotionListener {
 
-    int X_ORIGIN = 40;
-    int Y_ORIGIN = 40;
+    private int X_ORIGIN = 50;
+    private int Y_ORIGIN = 50;
 
-    Map map ;
+    private Map map ;
+
     public MapPanel() {
         map = new Map() ;
 
@@ -20,31 +21,108 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g ;
+
+        drawCells(g2) ;
+
+        drawBorders(g2) ;
+
+        drawSections(g2) ;
+
+        drawWalls(g2) ;
+
+    }
+
+    public void drawCells(Graphics2D g2) {
         Cell cell ;
+
         for(int i = 0 ; i < map.DEFAULT_SIZE ; i++) {
             for(int j = 0 ; j < map.DEFAULT_SIZE ; j++) {
                 cell = map.map[i][j] ;
+
                 g2.setColor(cell.getCellColor()) ;
-                g2.fillRect(40 + (i * cell.getWidth()), 40 + (j * cell.getHeight()), cell.getWidth(), cell.getHeight()) ;
-
-//                thickness = cell.getBorder() ;
-//                g2.setStroke(new BasicStroke(thickness)) ;
-//                g2.setColor(cell.BORDER_COLOR) ;
-//                g2.drawRect(40 + (i * cell.getWidth()), 40 + (j * cell.getHeight()), cell.getWidth(), cell.getHeight()) ;
-//                g2.setStroke(oldStroke) ;
-
-                // REFACTOR ALL THIS TO METHOD
-//                drawTopBorder(g2, cell.getBorder(), 40 + (i * cell.getWidth()), 40 + (j * cell.getHeight()),
-//                        40 + ((i + 1) * cell.getWidth()), 40 + (j * cell.getHeight()), cell.getBorderColor()) ;
-                drawTopBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
-                drawRightBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
-                drawBottomBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
-                drawLeftBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
-
+                g2.fillRect(X_ORIGIN + (i * cell.getWidth()), Y_ORIGIN + (j * cell.getHeight()), cell.getWidth(), cell.getHeight()) ;
             }
         }
     }
 
+    public void drawWalls(Graphics2D g2) {
+
+        Cell cell ;
+
+        for(int i = 0 ; i < map.DEFAULT_SIZE ; i++) {
+            for(int j = 0 ; j < map.DEFAULT_SIZE ; j++) {
+                cell = map.map[i][j] ;
+                if(cell.isWallTop()) {
+                    drawTopBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+
+                if(cell.isWallRight()) {
+                    drawRightBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+
+                if(cell.isWallBottom()) {
+                    drawBottomBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+
+                if(cell.isWallLeft()) {
+                    drawLeftBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+            }
+        }
+    }
+
+    public void drawSections(Graphics2D g2) {
+        Cell cell ;
+
+        for(int i = 0 ; i < map.DEFAULT_SIZE ; i++) {
+            for(int j = 0 ; j < map.DEFAULT_SIZE ; j++) {
+                cell = map.map[i][j] ;
+                if(!cell.isWallTop() && cell.isSectionTop()) {
+                    drawTopBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+
+                if(!cell.isWallRight() && cell.isSectionRight()) {
+                    drawRightBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+
+                if(!cell.isWallBottom() && cell.isSectionBottom()) {
+                    drawBottomBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+
+                if(!cell.isWallLeft() && cell.isSectionLeft()) {
+                    drawLeftBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+            }
+        }
+    }
+
+    public void drawBorders(Graphics2D g2) {
+        Cell cell ;
+
+        for(int i = 0 ; i < map.DEFAULT_SIZE ; i++) {
+            for(int j = 0 ; j < map.DEFAULT_SIZE ; j++) {
+                cell = map.map[i][j] ;
+
+                if(!cell.isWallTop() && !cell.isSectionTop()) {
+                    drawTopBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+
+                if(!cell.isWallRight() && !cell.isSectionRight()) {
+                    drawRightBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+
+                if(!cell.isWallBottom() && !cell.isSectionBottom()) {
+                    drawBottomBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+
+                if(!cell.isWallLeft() && !cell.isSectionLeft()) {
+                    drawLeftBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
+                }
+            }
+        }
+    }
+
+    // draw borders from cell border colors
     public void drawTopBorder(Graphics2D g2, Cell cell, int x, int y) {
         Stroke oldStroke = g2.getStroke();
 
@@ -139,6 +217,10 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     public void mouseDragged(MouseEvent e) {
 
+    }
+
+    public Map getMap() {
+        return map ;
     }
 
 

@@ -90,6 +90,9 @@ public class Cell {
         row = i ; //  row
     }
 
+    public void paintDefault() {
+        cellColor = CELL_COLOR_DEFAULT ;
+    }
 
     public void paintBlue() {
         cellColor = CELL_COLOR_BLUE ;

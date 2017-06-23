@@ -102,4 +102,8 @@ public class MapViewer implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
+
+    public Map getMap() {
+        return mapPanel.getMap() ;
+    }
 }
