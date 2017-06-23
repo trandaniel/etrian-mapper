@@ -9,10 +9,10 @@ public class MapLauncher {
 
         Map map = mapViewer.getMap() ;
 
-        map.getCellByIndex(2, 2).toggleTopWall() ;
-        map.getCellByIndex(4, 4).toggleRightWall() ;
-        map.getCellByIndex(6, 6).toggleBottomWall() ;
-        map.getCellByIndex(10, 8).toggleLeftWall() ;
+        map.toggleTopWallByCell(2, 2) ;
+        map.toggleRightWallByCell(4, 4) ;
+        map.toggleBottomWallByCell(6, 6) ;
+        map.toggleLeftWallByCell(10, 8) ;
 
         map.paintCellBlue(2, 2) ;
 

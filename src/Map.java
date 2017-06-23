@@ -98,22 +98,72 @@ public class Map {
 
     public void paintCellDefault(int j, int i) {
         map[i][j].paintDefault() ;
+
+        setAdjCells();
     }
 
     public void paintCellBlue(int j, int i) {
         map[i][j].paintBlue() ;
+
+        setAdjCells() ;
     }
 
     public void paintCellRed(int j, int i) {
         map[i][j].paintRed() ;
+
+        setAdjCells() ;
     }
 
     public void paintCellOrange(int j, int i) {
         map[i][j].paintOrange() ;
+
+        setAdjCells() ;
     }
 
     public void paintCellGreen(int j, int i) {
         map[i][j].paintGreen() ;
+
+        setAdjCells() ;
+    }
+
+    public void toggleTopWallByCell(int j, int i) {
+        map[i][j].toggleTopWall() ;
+
+        if(map[i][j].isCellTop()) {
+            map[i - 1][j].toggleBottomWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
+    public void toggleRightWallByCell(int j, int i) {
+        map[i][j].toggleRightWall() ;
+
+        if(map[i][j].isCellRight()) {
+            map[i][j + 1].toggleLeftWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
+    public void toggleBottomWallByCell(int j, int i) {
+        map[i][j].toggleBottomWall() ;
+
+        if(map[i][j].isCellBottom()) {
+            map[i + 1][j].toggleTopWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
+    public void toggleLeftWallByCell(int j, int i) {
+        map[i][j].toggleLeftWall() ;
+
+        if(map[i][j].isCellLeft()) {
+            map[i][j - 1].toggleRightWall() ;
+        }
+
+        setAdjCells() ;
     }
 
     public Cell getCellByIndex(int j, int i) {
