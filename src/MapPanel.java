@@ -37,7 +37,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
         addMouseMotionListener(this);
 
         paintMode = PAINT_CELL ;
-        paintColor = PAINT_COLOR_3 ;
+        paintColor = PAINT_COLOR_1 ;
 
     }
 

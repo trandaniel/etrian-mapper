@@ -70,18 +70,18 @@ public class MapViewer implements ActionListener {
         newToolBar.add(makeBtn("Delete Row", "../img/delRow.png", "Delete Row")) ;
         newToolBar.add(makeBtn("Add Col", "../img/addCol.png", "Add Column")) ;
         newToolBar.add(makeBtn("Delete Col", "../img/delCol.png", "Delete Column")) ;
-        newToolBar.add(makeBtn("Blue", "../img/blue/png", "Paint Blue")) ;
-        newToolBar.add(makeBtn("Red", "../img/red.png", "Paint Red")) ;
-        newToolBar.add(makeBtn("Orange", "../img/orange.png", "Paint Orange")) ;
-        newToolBar.add(makeBtn("Green", "../img/green.png", "Paint Green")) ;
-        newToolBar.add(makeBtn("Border", "../img/border.png", "Border Mode")) ;
+        newToolBar.add(setPaint1("../img/blue.png")) ;
+        newToolBar.add(setPaint2("../img/red.png")) ;
+        newToolBar.add(setPaint3("../img/orange.png")) ;
+        newToolBar.add(setPaint4("../img/green.png")) ;
+        newToolBar.add(wallModeBtn("../img/wall.img")) ;
 
         return newToolBar ;
     }
 
     public JButton makeBtn(String text, String img, String toolTip) {
         JButton button ;
-        
+
         try {
             button = new JButton(new ImageIcon(getClass().getResource(img))) ;
         }
@@ -103,6 +103,118 @@ public class MapViewer implements ActionListener {
         return button ;
     }
 
+    public JButton setPaint1(String img) {
+        JButton button ;
+
+        try {
+            button = new JButton(new ImageIcon(getClass().getResource(img))) ;
+        }
+        catch (Exception e) {
+            button = new JButton("Color 1") ;
+        }
+
+        button.setToolTipText("Switches to painting Cells with Color 1") ;
+
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mapPanel.setMode(mapPanel.PAINT_CELL) ;
+                mapPanel.setPaintColor(mapPanel.PAINT_COLOR_1) ;
+            }
+        }) ;
+
+        return button ;
+    }
+
+    public JButton setPaint2(String img) {
+        JButton button ;
+
+        try {
+            button = new JButton(new ImageIcon(getClass().getResource(img))) ;
+        }
+        catch (Exception e) {
+            button = new JButton("Color 2") ;
+        }
+
+        button.setToolTipText("Switches to painting Cells with Color 2") ;
+
+        button.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                mapPanel.setMode(mapPanel.PAINT_CELL) ;
+                mapPanel.setPaintColor(mapPanel.PAINT_COLOR_2) ;
+            }
+        });
+
+        return button ;
+    }
+
+    public JButton setPaint3(String img) {
+        JButton button ;
+
+        try {
+            button = new JButton(new ImageIcon(getClass().getResource(img))) ;
+        }
+        catch (Exception e) {
+            button = new JButton("Color 3") ;
+        }
+
+        button.setToolTipText("Switches to painting Cells with Color 3") ;
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mapPanel.setMode(mapPanel.PAINT_CELL) ;
+                mapPanel.setPaintColor(mapPanel.PAINT_COLOR_3) ;
+            }
+        });
+
+        return button ;
+    }
+
+    public JButton setPaint4(String img) {
+        JButton button ;
+
+        try {
+            button = new JButton(new ImageIcon(getClass().getResource(img))) ;
+        }
+        catch (Exception e) {
+            button = new JButton("Color 4") ;
+        }
+
+        button.setToolTipText("Switches to painting Cells with Color 4") ;
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mapPanel.setMode(mapPanel.PAINT_CELL) ;
+                mapPanel.setPaintColor(mapPanel.PAINT_COLOR_4) ;
+            }
+        });
+
+        return button ;
+    }
+
+    public JButton wallModeBtn(String img) {
+        JButton button ;
+
+        try {
+            button = new JButton(new ImageIcon(getClass().getResource(img))) ;
+        }
+
+        catch (Exception e) {
+            button = new JButton("Edit Walls") ;
+        }
+
+        button.setToolTipText("Sets the current Mode to Edit Walls");
+
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mapPanel.setMode(mapPanel.PAINT_WALL) ;
+            }
+        });
+
+        return button ;
+    }
 
     public void actionPerformed(ActionEvent e) {
 
