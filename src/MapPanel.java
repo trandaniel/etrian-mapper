@@ -15,20 +15,20 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 //    private final int BORDER_WIDTH = 2 ;
     private final int BORDER_SEN = 3 ;
 
-    private final int PAINT_NULL = 0 ;
-    private final int PAINT_CELL = 1 ;
-    private final int PAINT_WALL = 2 ;
+    final int PAINT_NULL = 0 ;
+    final int PAINT_CELL = 1 ;
+    final int PAINT_WALL = 2 ;
 
-    private final int PAINT_COLOR_0 = 0 ;
-    private final int PAINT_COLOR_1 = 1 ;
-    private final int PAINT_COLOR_2 = 2 ;
-    private final int PAINT_COLOR_3 = 3 ;
-    private final int PAINT_COLOR_4 = 4 ;
+    final int PAINT_COLOR_0 = 0 ;
+    final int PAINT_COLOR_1 = 1 ;
+    final int PAINT_COLOR_2 = 2 ;
+    final int PAINT_COLOR_3 = 3 ;
+    final int PAINT_COLOR_4 = 4 ;
 
     private Map map ;
     private int paintMode ;
     private int paintColor ;
-    int mapSize ;
+    private int mapSize ;
 
     public MapPanel() {
         map = new Map() ;
@@ -335,6 +335,14 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     public Map getMap() {
         return map ;
+    }
+
+    public void setPaintColor(int x) {
+        paintColor = x ;
+    }
+
+    public void setMode(int x) {
+        paintMode = x ;
     }
 
 
