@@ -70,6 +70,11 @@ public class MapViewer implements ActionListener {
         newToolBar.add(makeBtn("Delete Row", "../img/delRow.png", "Delete Row")) ;
         newToolBar.add(makeBtn("Add Col", "../img/addCol.png", "Add Column")) ;
         newToolBar.add(makeBtn("Delete Col", "../img/delCol.png", "Delete Column")) ;
+        newToolBar.add(makeBtn("Blue", "", "Paint Blue")) ;
+        newToolBar.add(makeBtn("Red", "", "Paint Red")) ;
+        newToolBar.add(makeBtn("Orange", "", "Paint Orange")) ;
+        newToolBar.add(makeBtn("Green", "", "Paint Green")) ;
+        newToolBar.add(makeBtn("Border", "", "Border Mode")) ;
 
         return newToolBar ;
     }
