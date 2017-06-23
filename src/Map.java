@@ -11,7 +11,7 @@ public class Map {
         map = new Cell[DEFAULT_SIZE][DEFAULT_SIZE] ;
         for(int i = 0 ; i < DEFAULT_SIZE ; i++) {
             for(int j = 0 ; j < DEFAULT_SIZE ; j++) {
-                map[i][j] = new Cell() ;
+                map[i][j] = new Cell(i, j) ;
             }
         }
     }
