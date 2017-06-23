@@ -12,7 +12,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
     private final int X_ORIGIN = 50;
     private final int Y_ORIGIN = 50;
     private final int CELL_WIDTH = 20 ;
-    private final int BORDER_WIDTH = 2 ;
+//    private final int BORDER_WIDTH = 2 ;
+    private final int BORDER_SEN = 3 ;
 
     private final int PAINT_NULL = 0 ;
     private final int PAINT_CELL = 1 ;
@@ -28,7 +29,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
         addMouseListener(this);
         addMouseMotionListener(this);
 
-        paintMode = PAINT_CELL ;
+        paintMode = PAINT_WALL ;
 
     }
 
@@ -222,8 +223,27 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
         int row = (y - Y_ORIGIN) / CELL_WIDTH ;
         int col = (x - X_ORIGIN) / CELL_WIDTH ;
 
-        if(paintMode == PAINT_CELL) {
-            map.map[row][col].paintBlue() ;
+        if(paintMode == PAINT_CELL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
+            map.paintCellBlue(col, row) ;
+        }
+
+        if(paintMode == PAINT_WALL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
+            if(checkTopBorder(x, y, row, col)) {
+                map.toggleTopWallByCell(col, row) ;
+            }
+
+            else if(checkRightBorder(x, y, row, col)) {
+                map.toggleRightWallByCell(col, row) ;
+            }
+
+            else if(checkBottomBorder(x, y, row, col)) {
+                map.toggleBottomWallByCell(col, row) ;
+            }
+
+            else if(checkLeftBorder(x, y, row, col)) {
+                map.toggleLeftWallByCell(col, row) ;
+            }
+
         }
 
         repaint() ;
@@ -251,10 +271,58 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
         int col = (x - X_ORIGIN) / CELL_WIDTH ;
 
         if(paintMode == PAINT_CELL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
-            map.map[row][col].paintBlue() ;
+            map.paintCellBlue(col, row) ;
         }
 
         repaint() ;
+    }
+
+    public boolean checkTopBorder(int x, int y, int row, int col) {
+        int topMinX = X_ORIGIN + (col * CELL_WIDTH) ;
+        int topMinY = Y_ORIGIN + (row * CELL_WIDTH) - BORDER_SEN;
+        int topMaxX = X_ORIGIN + ((col + 1) * CELL_WIDTH) ;
+        int topMaxY = Y_ORIGIN + (row * CELL_WIDTH) + BORDER_SEN ;
+
+        if(x >= topMinX && x <= topMaxX && y >= topMinY && y <= topMaxY) {
+            return true ;
+        }
+        return false ;
+    }
+
+    public boolean checkRightBorder(int x, int y, int row, int col) {
+        int rightMinX = X_ORIGIN + ((col + 1) * CELL_WIDTH) - BORDER_SEN ;
+        int rightMinY = Y_ORIGIN + (row * CELL_WIDTH) ;
+        int rightMaxX = X_ORIGIN + ((col + 1) * CELL_WIDTH) + BORDER_SEN ;
+        int rightMaxY = Y_ORIGIN + ((row + 1) * CELL_WIDTH) ;
+
+        if(x >= rightMinX && x <= rightMaxX && y >= rightMinY && y <= rightMaxY) {
+            return true ;
+        }
+        return false ;
+    }
+
+    public boolean checkBottomBorder(int x, int y, int row, int col) {
+        int botMinX = X_ORIGIN + (col * CELL_WIDTH) ;
+        int botMinY = Y_ORIGIN + ((row + 1) * CELL_WIDTH) - BORDER_SEN ;
+        int botMaxX = X_ORIGIN + ((col + 1) * CELL_WIDTH) ;
+        int botMaxY = Y_ORIGIN + ((row + 1) * CELL_WIDTH) + BORDER_SEN ;
+
+        if(x >= botMinX && x <= botMaxX && y >= botMinY && y <= botMaxY) {
+            return true ;
+        }
+        return false ;
+    }
+
+    public boolean checkLeftBorder(int x, int y, int row, int col) {
+        int leftMinX = X_ORIGIN + (col * CELL_WIDTH) - BORDER_SEN ;
+        int leftMinY = Y_ORIGIN + (row * CELL_WIDTH) ;
+        int leftMaxX = X_ORIGIN + (col * CELL_WIDTH) + BORDER_SEN ;
+        int leftMaxY = Y_ORIGIN + ((row + 1) * CELL_WIDTH) ;
+
+        if(x >= leftMinX && x <= leftMaxX && y >= leftMinY && y <= leftMaxY) {
+            return true ;
+        }
+        return false ;
     }
 
     public Map getMap() {
