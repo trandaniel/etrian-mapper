@@ -14,18 +14,14 @@ public class Cell {
     final int CELL_WIDTH = 20 ;
     final int CELL_HEIGHT = 20 ;
 
-    Color BORDER_COLOR_DARK     = new Color(8, 57, 90) ;
-    Color BORDER_COLOR_LIGHT    = new Color(24, 74, 115) ;
-    Color BORDER_COLOR_WALL    = new Color(148, 255, 239) ;
+    Color BORDER_COLOR    = new Color(8, 57, 90) ;
+    Color SECTION_COLOR   = new Color(24, 74, 115) ;
+    Color WALL_COLOR    = new Color(148, 255, 239) ;
 
     Color CELL_COLOR_DEFAULT    = new Color(0, 41, 74) ;
     Color CELL_COLOR_BLUE       = new Color(49, 133, 181) ;
 
     Color cellColor ;
-    Color borderTop ;
-    Color borderLeft ;
-    Color borderBottom ;
-    Color borderRight ;
 
     int height ;
     int width ;
@@ -38,21 +34,27 @@ public class Cell {
     boolean wallBottom ;
     boolean wallLeft ;
 
+    Cell cellTop ;
+    Cell cellRight ;
+    Cell cellBottom ;
+    Cell cellLeft ;
+
     public Cell() {
         height = CELL_HEIGHT ;
         width = CELL_WIDTH ;
         border = BORDER_WIDTH ;
 
         cellColor = CELL_COLOR_DEFAULT ;
-        borderTop = BORDER_COLOR_DARK ;
-        borderRight = BORDER_COLOR_DARK ;
-        borderBottom = BORDER_COLOR_DARK ;
-        borderLeft = BORDER_COLOR_DARK ;
 
         wallTop = false ;
         wallRight = false ;
         wallBottom = false ;
         wallLeft = false ;
+
+        cellTop = null ;
+        cellRight = null ;
+        cellBottom = null ;
+        cellLeft = null ;
     }
 
     public Cell(int i, int j) {
@@ -61,54 +63,62 @@ public class Cell {
         border = BORDER_WIDTH ;
 
         cellColor = CELL_COLOR_DEFAULT ;
-        borderTop = BORDER_COLOR_DARK ;
-        borderRight = BORDER_COLOR_DARK ;
-        borderBottom = BORDER_COLOR_DARK ;
-        borderLeft = BORDER_COLOR_DARK ;
 
         wallTop = false ;
         wallRight = false ;
         wallBottom = false ;
         wallLeft = false ;
 
+        cellTop = null ;
+        cellRight = null ;
+        cellBottom = null ;
+        cellLeft = null ;
+
         col = j ; //  col
         row = i ; //  row
     }
 
-    public void borderSectionTop() {
-        borderTop = BORDER_COLOR_LIGHT ;
-    }
-
-    public void borderSectionRight() {
-        borderRight = BORDER_COLOR_LIGHT ;
-    }
-
-    public void borderSectionBottom() {
-        borderBottom = BORDER_COLOR_LIGHT ;
-    }
-
-    public void borderSectionLeft() {
-        borderLeft = BORDER_COLOR_LIGHT ;
-    }
 
     public void paintBlue() {
         cellColor = CELL_COLOR_BLUE ;
     }
 
-    public void wallTop() {
-        borderTop = BORDER_COLOR_WALL ;
+    public void toggleWall(int id) {
+        switch(id){
+            case WALL_TOP:      wallTop = !wallTop ;
+                break ;
+            case WALL_RIGHT:    wallRight = !wallRight ;
+                break ;
+            case WALL_BOTTOM:   wallBottom = !wallBottom ;
+                break ;
+            case WALL_LEFT:     wallLeft = !wallLeft ;
+                break ;
+            default:            break ;
+        }
     }
 
-    public void wallRight() {
-        borderRight = BORDER_COLOR_WALL ;
+    public void setRow(int row) {
+        this.row = row ;
     }
 
-    public void wallBottom() {
-        borderBottom = BORDER_COLOR_WALL ;
+    public void setCol(int col) {
+        this.col = col ;
     }
 
-    public void wallLeft() {
-        borderLeft = BORDER_COLOR_WALL ;
+    public void setCellTop(Cell cell) {
+        cellTop = cell ;
+    }
+
+    public void setCellRight(Cell cell) {
+        cellRight = cell ;
+    }
+
+    public void setCellBottom(Cell cell) {
+        cellBottom = cell ;
+    }
+
+    public void setCellLeft(Cell cell) {
+        cellLeft = cell ;
     }
 
     public int getHeight() {
@@ -131,20 +141,6 @@ public class Cell {
         return col ;
     }
 
-    public void toggleWall(int id) {
-        switch(id){
-            case WALL_TOP:      wallTop = !wallTop ;
-                                break ;
-            case WALL_RIGHT:    wallRight = !wallRight ;
-                                break ;
-            case WALL_BOTTOM:   wallBottom = !wallBottom ;
-                                break ;
-            case WALL_LEFT:     wallLeft = !wallLeft ;
-                                break ;
-            default:            break ;
-        }
-    }
-
     public boolean isWallTop() {
         return wallTop ;
     }
@@ -160,8 +156,36 @@ public class Cell {
     public boolean isWallLeft() {
         return wallLeft ;
     }
-    
+
+    public Cell getCellTop() {
+        return cellTop ;
+    }
+
+    public Cell getCellRight() {
+        return cellRight ;
+    }
+
+    public Cell getCellBottom() {
+        return cellBottom ;
+    }
+
+    public Cell getCellLeft() {
+        return cellLeft ;
+    }
+
     public Color getCellColor() {
         return cellColor ;
+    }
+
+    public Color getWallColor() {
+        return WALL_COLOR ;
+    }
+
+    public Color getSectionColor() {
+        return SECTION_COLOR ;
+    }
+
+    public Color getBorderColor() {
+        return BORDER_COLOR ;
     }
 }
