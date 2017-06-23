@@ -6,8 +6,8 @@ public class Map {
     final int DEFAULT_SIZE = 20 ;
 
     // [row][col]
-    Cell[][] map ;
-    int size ;
+    public Cell[][] map ;
+    public int size ;
 
     public Map() {
         size = DEFAULT_SIZE ;

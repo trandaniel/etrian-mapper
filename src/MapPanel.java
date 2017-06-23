@@ -9,13 +9,26 @@ import java.awt.event.MouseMotionListener;
  */
 public class MapPanel extends JPanel implements MouseListener, MouseMotionListener {
 
-    private int X_ORIGIN = 50;
-    private int Y_ORIGIN = 50;
+    private final int X_ORIGIN = 50;
+    private final int Y_ORIGIN = 50;
+    private final int CELL_WIDTH = 20 ;
+    private final int BORDER_WIDTH = 2 ;
+
+    private final int PAINT_NULL = 0 ;
+    private final int PAINT_CELL = 1 ;
+    private final int PAINT_WALL = 2 ;
 
     private Map map ;
+    private int paintMode ;
+    int mapSize ;
 
     public MapPanel() {
         map = new Map() ;
+        mapSize = map.getSize() ;
+        addMouseListener(this);
+        addMouseMotionListener(this);
+
+        paintMode = PAINT_CELL ;
 
     }
 
@@ -203,7 +216,18 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
     }
 
     public void mousePressed(MouseEvent e) {
+        int x = e.getX() ;
+        int y = e.getY() ;
 
+        int row = (y - Y_ORIGIN) / CELL_WIDTH ;
+        int col = (x - X_ORIGIN) / CELL_WIDTH ;
+
+        if(paintMode == PAINT_CELL) {
+            map.map[row][col].paintBlue() ;
+        }
+
+        repaint() ;
+        System.out.println("Pressed on Cell: (" + col + ", " + row + ")") ;
     }
 
     public void mouseEntered(MouseEvent e) {
@@ -220,6 +244,17 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     public void mouseDragged(MouseEvent e) {
 
+        int x = e.getX() ;
+        int y = e.getY() ;
+
+        int row = (y - Y_ORIGIN) / CELL_WIDTH ;
+        int col = (x - X_ORIGIN) / CELL_WIDTH ;
+
+        if(paintMode == PAINT_CELL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
+            map.map[row][col].paintBlue() ;
+        }
+
+        repaint() ;
     }
 
     public Map getMap() {
