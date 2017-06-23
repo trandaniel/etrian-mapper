@@ -39,9 +39,12 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
             for(int j = 0 ; j < map.DEFAULT_SIZE ; j++) {
                 cell = map.map[i][j] ;
 
+//                System.out.print("1 ") ;
+
                 g2.setColor(cell.getCellColor()) ;
-                g2.fillRect(X_ORIGIN + (i * cell.getWidth()), Y_ORIGIN + (j * cell.getHeight()), cell.getWidth(), cell.getHeight()) ;
+                g2.fillRect(X_ORIGIN + (cell.getCol() * cell.getWidth()), Y_ORIGIN + (cell.getRow() * cell.getHeight()), cell.getWidth(), cell.getHeight()) ;
             }
+//            System.out.println() ;
         }
     }
 
@@ -126,8 +129,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
     public void drawTopBorder(Graphics2D g2, Cell cell, int x, int y) {
         Stroke oldStroke = g2.getStroke();
 
-        int x1 = x + (cell.getRow() * cell.getWidth());
-        int y1 = y + (cell.getCol() * cell.getHeight());
+        int x1 = x + (cell.getCol() * cell.getWidth());
+        int y1 = y + (cell.getRow() * cell.getHeight());
 
         int x2 = x1 + cell.getWidth();
         int y2 = y1;
@@ -143,8 +146,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
     public void drawRightBorder(Graphics2D g2, Cell cell, int x, int y) {
         Stroke oldStroke = g2.getStroke() ;
 
-        int x1 = x + ((cell.getRow() + 1) * cell.getWidth()) ;
-        int y1 = y + (cell.getCol() * cell.getHeight()) ;
+        int x1 = x + ((cell.getCol() + 1) * cell.getWidth()) ;
+        int y1 = y + (cell.getRow() * cell.getHeight()) ;
 
         int x2 = x1 ;
         int y2 = y1 + cell.getHeight() ;
@@ -160,8 +163,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
     public void drawBottomBorder(Graphics2D g2, Cell cell, int x, int y) {
         Stroke oldStroke = g2.getStroke() ;
 
-        int x1 = x + (cell.getRow() * cell.getWidth()) ;
-        int y1 = y + ((cell.getCol() + 1) * cell.getHeight()) ;
+        int x1 = x + (cell.getCol() * cell.getWidth()) ;
+        int y1 = y + ((cell.getRow() + 1) * cell.getHeight()) ;
 
         int x2 = x1 + cell.getWidth() ;
         int y2 = y1 ;
@@ -177,8 +180,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
     public void drawLeftBorder(Graphics2D g2, Cell cell, int x, int y) {
         Stroke oldStroke = g2.getStroke() ;
 
-        int x1 = x + (cell.getRow() * cell.getWidth());
-        int y1 = y + (cell.getCol() * cell.getHeight());
+        int x1 = x + (cell.getCol() * cell.getWidth());
+        int y1 = y + (cell.getRow() * cell.getHeight());
 
         int x2 = x1 ;
         int y2 = y1 + cell.getHeight() ;
