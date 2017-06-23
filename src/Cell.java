@@ -144,6 +144,7 @@ public class Cell {
 
     public void toggleTopWall() {
         wallTop = !wallTop ;
+
     }
 
     public void toggleRightWall() {
@@ -224,6 +225,34 @@ public class Cell {
 
     public boolean isSectionLeft() {
         return sectionLeft ;
+    }
+
+    public boolean isCellTop() {
+        if(cellTop == null) {
+            return false ;
+        }
+        return true ;
+    }
+
+    public boolean isCellRight() {
+        if(cellRight == null) {
+            return false ;
+        }
+        return true ;
+    }
+
+    public boolean isCellBottom() {
+        if(cellBottom == null) {
+            return false ;
+        }
+        return true ;
+    }
+
+    public boolean isCellLeft() {
+        if(cellLeft == null) {
+            return false ;
+        }
+        return true ;
     }
 
     public Cell getCellTop() {
@@ -312,5 +341,11 @@ public class Cell {
         else {
             return BORDER_COLOR ;
         }
+    }
+
+    public String toString() {
+        return "Location: (" + col + ", " + row + ")\n" +
+                "Color: " + cellColor + "\n" +
+                "Walls: (" + wallTop + ", " + wallRight + ", " + wallBottom + ", " + wallLeft + ")\n" ;
     }
 }

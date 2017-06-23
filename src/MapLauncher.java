@@ -9,18 +9,18 @@ public class MapLauncher {
 
         Map map = mapViewer.getMap() ;
 
-        map.getCellByIndex(2, 2).toggleTopWall() ;
-        map.getCellByIndex(2, 2).toggleRightWall() ;
-        map.getCellByIndex(2, 2).toggleBottomWall() ;
-        map.getCellByIndex(2, 2).toggleLeftWall() ;
+        map.toggleTopWallByCell(2, 2) ;
+        map.toggleRightWallByCell(4, 4) ;
+        map.toggleBottomWallByCell(6, 6) ;
+        map.toggleLeftWallByCell(10, 8) ;
 
-        map.getCellByIndex(2, 2).paintBlue() ;
+        map.paintCellBlue(2, 2) ;
 
-        map.getCellByIndex(4, 4).paintRed() ;
+        map.paintCellRed(4, 4) ;
 
-        map.getCellByIndex(6, 6).paintOrange() ;
+        map.paintCellOrange(6, 6) ;
 
-        map.getCellByIndex(10, 8).paintGreen() ;
+        map.paintCellGreen(10, 8) ;
 
         map.printCells();
 
