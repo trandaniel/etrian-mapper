@@ -97,8 +97,28 @@ public class Cell {
     }
 
     public void sectionBorders() {
+        if(col == 0) {
+            sectionLeft = true ;
+        }
+
+        if(row == 0) {
+            sectionTop = true ;
+        }
+
         if((col + 1) % 5 == 0) {
             sectionRight = true ;
+        }
+
+        if((row + 1) % 5 == 0) {
+            sectionBottom = true ;
+        }
+
+        if((col + 1) % 5 == 1) {
+            sectionLeft = true ;
+        }
+
+        if((row + 1) % 5 == 1) {
+            sectionTop = true ;
         }
     }
 
