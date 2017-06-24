@@ -60,13 +60,13 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     }
 
-    // TODO: ArrayList
     public void drawCells(Graphics2D g2) {
         Cell cell ;
 
         for(int i = 0 ; i < map.getSize() ; i++) {
             for(int j = 0 ; j < map.getSize() ; j++) {
-                cell = map.map[i][j] ;
+//                cell = map.map[i][j] ;
+                cell = map.map1.get(i).get(j) ;
 
 //                System.out.print("1 ") ;
 
@@ -83,7 +83,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
         for(int i = 0 ; i < map.getSize() ; i++) {
             for(int j = 0 ; j < map.getSize() ; j++) {
-                cell = map.map[i][j] ;
+//                cell = map.map[i][j] ;
+                cell = map.map1.get(i).get(j) ;
                 if(cell.isWallTop()) {
                     drawTopBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
                 }
@@ -108,7 +109,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
         for(int i = 0 ; i < map.getSize() ; i++) {
             for(int j = 0 ; j < map.getSize() ; j++) {
-                cell = map.map[i][j] ;
+//                cell = map.map[i][j] ;
+                cell = map.map1.get(i).get(j) ;
                 if(!cell.isWallTop() && cell.isSectionTop()) {
                     drawTopBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
                 }
@@ -133,7 +135,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
         for(int i = 0 ; i < map.getSize() ; i++) {
             for(int j = 0 ; j < map.getSize() ; j++) {
-                cell = map.map[i][j] ;
+//                cell = map.map[i][j] ;
+                cell = map.map1.get(i).get(j) ;
 
                 if(!cell.isWallTop() && !cell.isSectionTop()) {
                     drawTopBorder(g2, cell, X_ORIGIN, Y_ORIGIN) ;
