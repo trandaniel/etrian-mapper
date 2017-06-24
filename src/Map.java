@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by Danyo on 2017-06-22.
  */
@@ -11,6 +13,10 @@ public class Map {
     private final int PAINT_COLOR_3 = 3 ;
     private final int PAINT_COLOR_4 = 4 ;
 
+    private final int SECTION_SIZE = 5 ;
+
+    // TODO: Switch to ArrayList
+    public ArrayList<ArrayList<Cell>> map1 = new ArrayList<>() ;
     // [row][col]
     public Cell[][] map ;
     public int size ;
@@ -34,12 +40,18 @@ public class Map {
     public void makeMap(int s) {
         map = new Cell[s][s] ;
         for(int i = 0 ; i < s ; i++) {
+
+            map1.add(new ArrayList<>()) ;
+
             for(int j = 0 ; j < s ; j++) {
                 map[i][j] = new Cell(i, j) ;
+
+                map1.get(i).add(new Cell(i, j)) ;
             }
         }
     }
 
+    // TODO: ArrayList
     public void setAdjCells() {
         Cell cell ;
         for(int i = 0 ; i < size ; i++) {
@@ -53,6 +65,7 @@ public class Map {
         }
     }
 
+    // TODO: ArrayList
     private Cell topCell(int i, int j) {
         if(i - 1 < 0) {
             return null ;
@@ -90,9 +103,9 @@ public class Map {
     }
 
     public void printCells() {
-        for(int i = 0 ; i < map.length ; i++) {
-            for(int j = 0 ; j < map[i].length ; j++) {
-                System.out.println(map[i][j]) ;
+        for(int i = 0 ; i < map1.size() ; i++) {
+            for(int j = 0 ; j < map1.get(i).size() ; j++) {
+                System.out.println(map1.get(i).get(j)) ;
             }
             System.out.println() ;
         }
@@ -102,6 +115,7 @@ public class Map {
         return size ;
     }
 
+    // TODO: ArrayList
     public void paintCellDefault(int j, int i) {
         map[i][j].paintDefault() ;
 

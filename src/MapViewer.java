@@ -103,6 +103,52 @@ public class MapViewer implements ActionListener {
         return button ;
     }
 
+    // TODO: Add ActionListener
+    public JButton plusSize(String img) {
+        JButton button ;
+
+        try {
+            button = new JButton(new ImageIcon(getClass().getResource(img))) ;
+        }
+        catch (Exception e) {
+            button = new JButton("Add") ;
+        }
+
+        button.setToolTipText("Increases the Map size by one row and column section") ;
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // ?????
+            }
+        });
+
+        return button ;
+    }
+
+    // TODO: Add ActionListener
+    public JButton minusSize(String img) {
+        JButton button ;
+
+        try {
+            button = new JButton(new ImageIcon(getClass().getResource(img))) ;
+        }
+        catch (Exception e) {
+            button = new JButton("Sub") ;
+        }
+
+        button.setToolTipText("Decreases the map size but one row and column section") ;
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // ?????
+            }
+        });
+
+        return button ;
+    }
+
     public JButton clearMap(String img) {
         JButton button ;
 

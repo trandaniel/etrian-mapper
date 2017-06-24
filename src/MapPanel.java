@@ -60,6 +60,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     }
 
+    // TODO: ArrayList
     public void drawCells(Graphics2D g2) {
         Cell cell ;
 
