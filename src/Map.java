@@ -188,6 +188,46 @@ public class Map {
         setAdjCells() ;
     }
 
+    public void drawTopWallByCell(int j, int i) {
+        map[i][j].drawTopWall() ;
+
+        if(map[i][j].isCellTop()) {
+            map[i - 1][j].drawBottomWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
+    public void drawRightWallByCell(int j, int i) {
+        map[i][j].drawRightWall() ;
+
+        if(map[i][j].isCellRight()) {
+            map[i][j + 1].drawLeftWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
+    public void drawBottomWallByCell(int j, int i) {
+        map[i][j].drawBottomWall() ;
+
+        if(map[i][j].isCellBottom()) {
+            map[i + 1][j].drawTopWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
+    public void drawLeftWallByCell(int j, int i) {
+        map[i][j].drawLeftWall() ;
+
+        if(map[i][j].isCellLeft()) {
+            map[i][j - 1].drawRightWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
     public Cell getCellByIndex(int j, int i) {
         return map[i][j] ;
     }

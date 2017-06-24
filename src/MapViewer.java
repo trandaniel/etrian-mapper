@@ -69,7 +69,7 @@ public class MapViewer implements ActionListener {
         newToolBar.add(makeBtn("Add Row", "../img/addRow.png", "Add Row")) ;
         newToolBar.add(makeBtn("Delete Row", "../img/delRow.png", "Delete Row")) ;
         newToolBar.add(makeBtn("Add Col", "../img/addCol.png", "Add Column")) ;
-        newToolBar.add(makeBtn("Delete Col", "../img/delCol.png", "Delete Column")) ;
+        newToolBar.add(clearMap("../img/clear.png")) ;
         newToolBar.add(setPaint1("../img/blue.png")) ;
         newToolBar.add(setPaint2("../img/red.png")) ;
         newToolBar.add(setPaint3("../img/orange.png")) ;
@@ -99,6 +99,28 @@ public class MapViewer implements ActionListener {
         else if (compactBtns) {
             button.setBorder(new EmptyBorder( 0, 0, 0, 0));
         }
+
+        return button ;
+    }
+
+    public JButton clearMap(String img) {
+        JButton button ;
+
+        try {
+            button = new JButton(new ImageIcon(getClass().getResource(img))) ;
+        }
+        catch (Exception e) {
+            button = new JButton("Clear Map") ;
+        }
+
+        button.setToolTipText("Clears the map") ;
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mapPanel.newMap() ;
+            }
+        });
 
         return button ;
     }

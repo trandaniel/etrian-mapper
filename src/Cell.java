@@ -159,6 +159,38 @@ public class Cell {
         wallLeft = !wallLeft ;
     }
 
+    public void drawTopWall() {
+        wallTop = true ;
+    }
+
+    public void drawRightWall() {
+        wallRight = true ;
+    }
+
+    public void drawBottomWall() {
+        wallBottom = true ;
+    }
+
+    public void drawLeftWall() {
+        wallLeft = true ;
+    }
+
+    public void eraseTopWall() {
+        wallTop = false ;
+    }
+
+    public void eraseRightWall() {
+        wallRight = false ;
+    }
+
+    public void eraseBottomWall() {
+        wallBottom = false ;
+    }
+
+    public void eraseLeftWall() {
+        wallLeft = false ;
+    }
+
     public void setCellTop(Cell cell) {
         cellTop = cell ;
     }

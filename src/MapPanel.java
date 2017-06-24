@@ -41,6 +41,12 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     }
 
+    public void newMap() {
+        map = new Map() ;
+
+        repaint() ;
+    }
+
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g ;
 
@@ -280,6 +286,25 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
         if(paintMode == PAINT_CELL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
             map.paintCell(col, row, paintColor) ;
+        }
+
+        if(paintMode == PAINT_WALL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
+            if(checkTopBorder(x, y, row, col)) {
+                map.drawTopWallByCell(col, row) ;
+            }
+
+            else if(checkRightBorder(x, y, row, col)) {
+                map.drawRightWallByCell(col, row) ;
+            }
+
+            else if(checkBottomBorder(x, y, row, col)) {
+                map.drawBottomWallByCell(col, row) ;
+            }
+
+            else if(checkLeftBorder(x, y, row, col)) {
+                map.drawLeftWallByCell(col, row) ;
+            }
+
         }
 
         repaint() ;
