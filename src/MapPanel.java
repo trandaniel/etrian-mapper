@@ -17,7 +17,8 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     final int PAINT_NULL = 0 ;
     final int PAINT_CELL = 1 ;
-    final int PAINT_WALL = 2 ;
+    final int DRAW_WALL = 2 ;
+    final int ERASE_WALL = 3 ;
 
     final int PAINT_COLOR_0 = 0 ;
     final int PAINT_COLOR_1 = 1 ;
@@ -245,7 +246,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
             map.paintCell(col, row, paintColor) ;
         }
 
-        if(paintMode == PAINT_WALL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
+        if(paintMode == DRAW_WALL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
             if(checkTopBorder(x, y, row, col)) {
                 map.toggleTopWallByCell(col, row) ;
             }
@@ -260,6 +261,25 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
             else if(checkLeftBorder(x, y, row, col)) {
                 map.toggleLeftWallByCell(col, row) ;
+            }
+
+        }
+
+        if(paintMode == ERASE_WALL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
+            if(checkTopBorder(x, y, row, col)) {
+                map.eraseTopWallByCell(col, row) ;
+            }
+
+            else if(checkRightBorder(x, y, row, col)) {
+                map.eraseRightWallByCell(col, row) ;
+            }
+
+            else if(checkBottomBorder(x, y, row, col)) {
+                map.eraseBottomWallByCell(col, row) ;
+            }
+
+            else if(checkLeftBorder(x, y, row, col)) {
+                map.eraseLeftWallByCell(col, row) ;
             }
 
         }
@@ -292,7 +312,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
             map.paintCell(col, row, paintColor) ;
         }
 
-        if(paintMode == PAINT_WALL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
+        if(paintMode == DRAW_WALL && row >= 0 && col >= 0 && row < mapSize && col < mapSize) {
             if(checkTopBorder(x, y, row, col)) {
                 map.drawTopWallByCell(col, row) ;
             }

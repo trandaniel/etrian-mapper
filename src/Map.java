@@ -286,6 +286,46 @@ public class Map {
         setAdjCells() ;
     }
 
+    public void eraseTopWallByCell(int j, int i) {
+        map1.get(i).get(j).eraseTopWall() ;
+
+        if(map1.get(i).get(j).isCellTop()) {
+            map1.get(i - 1).get(j).eraseBottomWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
+    public void eraseRightWallByCell(int j, int i) {
+        map1.get(i).get(j).eraseRightWall() ;
+
+        if(map1.get(i).get(j).isCellRight()) {
+            map1.get(i).get(j + 1).eraseLeftWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
+    public void eraseBottomWallByCell(int j, int i) {
+        map1.get(i).get(j).eraseBottomWall() ;
+
+        if(map1.get(i).get(j).isCellBottom()) {
+            map1.get(i + 1).get(j).eraseTopWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
+    public void eraseLeftWallByCell(int j, int i) {
+        map1.get(i).get(j).eraseLeftWall() ;
+
+        if(map1.get(i).get(j).isCellLeft()) {
+            map1.get(i).get(j - 1).eraseRightWall() ;
+        }
+
+        setAdjCells() ;
+    }
+
     public Cell getCellByIndex(int j, int i) {
 //        return map[i][j] ;
         return map1.get(i).get(j) ;

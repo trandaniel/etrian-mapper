@@ -74,8 +74,8 @@ public class MapViewer implements ActionListener {
         newToolBar.add(setPaint2("../img/red.png")) ;
         newToolBar.add(setPaint3("../img/orange.png")) ;
         newToolBar.add(setPaint4("../img/green.png")) ;
-        newToolBar.add(wallModeBtn("../img/wall.img")) ;
-
+        newToolBar.add(wallModeBtn("img/drawWall.png")) ;
+        newToolBar.add(eraseWallModeBtn("img/eraseWall.png")) ;
         return newToolBar ;
     }
 
@@ -270,14 +270,38 @@ public class MapViewer implements ActionListener {
         }
 
         catch (Exception e) {
-            button = new JButton("Edit Walls") ;
+            button = new JButton("Draw Walls") ;
         }
 
-        button.setToolTipText("Sets the current Mode to Edit Walls");
+        button.setToolTipText("Sets the current mode to draw walls");
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                mapPanel.setMode(mapPanel.PAINT_WALL) ;
+                mapPanel.setMode(mapPanel.DRAW_WALL) ;
+            }
+        });
+
+        return button ;
+    }
+
+    public JButton eraseWallModeBtn(String img) {
+        JButton button ;
+
+        System.out.println("Path: " + img) ;
+        try {
+            button = new JButton(new ImageIcon(getClass().getResource(img))) ;
+        }
+
+        catch (Exception e) {
+            button = new JButton("Erase Walls") ;
+        }
+
+        button.setToolTipText("Sets the current mode to erase walls");
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mapPanel.setMode(mapPanel.ERASE_WALL) ;
             }
         });
 
