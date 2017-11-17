@@ -22,10 +22,9 @@ public class MapViewer implements ActionListener {
 
 
     JToolBar toolBar ;
-    JButton  newBtn ;
-    JButton  opnBtn ;
-    JButton  saveBtn ;
-    JButton  clrBtn ;
+//    JToolBar colorBar = new JToolBar();
+//
+//    ButtonGroup cellColor = new ButtonGroup() ;
 
     boolean borderedBtns ;
     boolean compactBtns ;
@@ -45,7 +44,16 @@ public class MapViewer implements ActionListener {
 
         outerPane.setLayout(new BorderLayout()) ;
 
-
+//        JRadioButton btn1 = new JRadioButton("one") ;
+//        JRadioButton btn2 = new JRadioButton("two") ;
+//
+//        cellColor.add(btn1) ;
+//        cellColor.add(btn2) ;
+//
+//        colorBar.add(btn1) ;
+//        colorBar.add(btn2) ;
+//
+//        outerPane.add(colorBar, BorderLayout.SOUTH) ;
 
 
         toolBar = new JToolBar() ;
